@@ -1,0 +1,8 @@
+<div>
+  <input class="form-control-sm" type="number" placeholder="Enter value" [(ngModel)]="value">
+  <button class="btn btn-primary btn-sm m-1" (click)="onAdd()">Increment</button>
+</div>
+<div>
+  <h5>{{(name$ | async).name}}</h5><br>
+  <button class="btn btn-success btn-sm m-1" (click)="modifyName()">Change</button>
+</div>
