@@ -1,0 +1,11 @@
+<h5>Edit Post</h5>
+<form [formGroup]="editPostForm" (ngSubmit)="editPost()">
+  <div class="form-group">
+    <input type="text" class="form-control m-1" placeholder="Title" formControlName="title">
+    <small class="text-danger" *ngIf="editPostForm.get('title').invalid && editPostForm.get('title').touched">Please enter a title</small>
+    <textarea type="text" class="form-control m-1" placeholder="Description" formControlName="description"></textarea>
+    <small class="text-danger" *ngIf="editPostForm.get('description').invalid && editPostForm.get('description').touched">Please enter a description</small>
+  </div>
+  <button class="btn btn-success btn-sm" type="submit" [disabled]="editPostForm.invalid">Submit</button>
+</form>
+

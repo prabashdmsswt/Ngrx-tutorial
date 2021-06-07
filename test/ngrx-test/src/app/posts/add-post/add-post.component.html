@@ -1,0 +1,12 @@
+<h5>Add Post</h5>
+<form [formGroup]="addPost" (ngSubmit)="addNewPost()">
+  <div class="form-group">
+<!--    <input type="number" class="form-control m-1" placeholder="ID" formControlName="id">-->
+<!--    <small class="text-danger" *ngIf="addPost.get('id').invalid && addPost.get('id').touched">Please enter an ID</small>-->
+    <input type="text" class="form-control m-1" placeholder="Title" formControlName="title">
+    <small class="text-danger" *ngIf="addPost.get('title').invalid && addPost.get('title').touched">Please enter a title</small>
+    <textarea type="text" class="form-control m-1" placeholder="Description" formControlName="description"></textarea>
+    <small class="text-danger" *ngIf="addPost.get('description').invalid && addPost.get('description').touched">Please enter a description</small>
+  </div>
+  <button class="btn btn-success btn-sm" type="submit" [disabled]="addPost.invalid">Submit</button>
+</form>

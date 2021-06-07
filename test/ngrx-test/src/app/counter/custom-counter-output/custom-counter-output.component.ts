@@ -3,6 +3,8 @@ import {Store} from '@ngrx/store';
 import {CounterState} from '../state/counter.state';
 import {changeName, customIncrement} from '../state/counter.action';
 import {Observable} from 'rxjs';
+import {getName} from '../state/counter.selector';
+import {AppState} from '../../app.state';
 
 @Component({
   selector: 'app-custom-counter-output',
@@ -12,16 +14,17 @@ import {Observable} from 'rxjs';
 export class CustomCounterOutputComponent implements OnInit {
   value: number;
   name: string;
-  name$: Observable<{name: string}>;
-  constructor(private store: Store<{counter: CounterState}>) { }
+  name$: Observable<string>;
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    this.name$ = this.store.select('counter');
+    this.name$ = this.store.select(getName);
   }
 
   onAdd() {
-    console.log(this.value);
-    this.store.dispatch(customIncrement({value: this.value}));
+    if (this.value > 0) {
+      this.store.dispatch(customIncrement({value: this.value}));
+    }
   }
 
   modifyName() {
